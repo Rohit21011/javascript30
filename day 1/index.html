@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+  <div>
+    <img src="musical event.jpg" width="100%" height="640px" alt="musical event">
+    
+    <div class="drums">
+        <div data-key="65" class="key">
+            <span>A</span><br>
+            <span>CLAP</span>
+        </div>
+        <div data-key="83" class="key">
+            <span>S</span><br>
+            <span>HIHAT</span>
+        </div>
+        <div data-key="68" class="key">
+            <span>D</span><br>
+            <span>KICK</span>
+        </div>
+        <div data-key="70" class="key">
+            <span>F</span><br>
+            <span>OPENHAT</span>
+        </div>
+        <div data-key="71" class="key">
+            <span>G</span><br>
+            <span>BOOM</span>
+        </div>
+        <div data-key="72" class="key">
+            <span>H</span><br>
+            <span>RIDE</span>
+        </div>
+        <div data-key="74" class="key">
+            <span>J</span><br>
+            <span>SNARE</span>
+        </div>
+        <div data-key="75" class="key">
+            <span>K</span><br>
+            <span>TOM</span>
+        </div>
+        <div data-key="76" class="key">
+            <span>L</span><br>
+            <span>TINK</span>
+        </div>
+    </div>
+    <audio data-key="65" src="sounds/clap.mp3"></audio>
+    <audio data-key="83" src="sounds/boom.mp3"></audio>
+    <audio data-key="68" src="sounds/hihat.mp3"></audio>
+    <audio data-key="70" src="sounds/kick.mp3"></audio>
+    <audio data-key="71" src="sounds/openhat.mp3"></audio>
+    <audio data-key="72" src="sounds/ride.mp3"></audio>
+    <audio data-key="74" src="sounds/snare drum.mp3"></audio>
+    <audio data-key="76" src="sounds/tink.mp3"></audio>
+    <audio data-key="75" src="sounds/tom.mp3"></audio>
+  </div>
+  <script>
+    window.addEventListener("keydown",(e)=>{
+    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+    const key=document.querySelector(`.key[data-key="${e.keyCode}"]`);
+    if(!audio) return;
+    audio.currentTime = 0;
+    key.classList.add("active");
+    setTimeout(()=>{
+        key.classList.remove("active");
+    },200);
+    audio.play(); 
+    });
+  </script>
+</body>   
+
+</html>
