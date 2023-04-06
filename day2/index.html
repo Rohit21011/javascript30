@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="clock_position">
+        
+        <div id="hourHand"></div>
+        <div id="minuteHand"></div>
+        <div id="secondHand"></div>
+        <div></div>
+    </div>
+    <audio id="sound" src="clocksound.wav"></audio>
+    <script>
+       
+       const clock= setInterval(()=>{
+            let date=new Date();
+            let seconds=date.getSeconds()*6+90;
+            setInterval(()=>{
+                const audio=document.getElementById("sound");
+                audio.play();
+            },seconds-400);
+            
+            
+            let secHand=document.getElementById("secondHand");
+            secondHand.style="transform: rotate("+seconds+"deg); transform-origin: 0% 0%;";
+
+            
+            let minutes=date.getMinutes()*6;
+            let minHand=document.getElementById("minuteHand");
+            minHand.style="transform: rotate("+minutes+"deg); transform-origin: 0% 0%;";
+
+            let hours=date.getHours()*30;
+            let hourHand=document.getElementById("hourHand");
+            hourHand.style="transform: rotate("+hours+"deg); transform-origin: 0% 0%;";
+            
+        },1000);
+    
+    </script>
+</body>
+</html>
